@@ -1,0 +1,41 @@
+/* 
+ * Block text
+ * Example: @include text(12px, #000, 600, 1);
+ */
+@mixin text($size: false, $color: false, $weight: false,  $lineheight: false) {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    @if $size { font-size: $size; }
+    @if $color { color: $color; }
+    @if $weight { font-weight: $weight; }
+    @if $lineheight { line-height: $lineheight; }
+}
+
+/* 
+ * Buttons
+ * Example: @include button-bg(#ff0);
+ */
+ @mixin button-bg($bg) {
+  background: $bg;
+
+  &:hover {
+    background:darken($bg, 8%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background:darken($bg, 25%);
+  } 
+}
+
+/* 
+ * Box div
+ * Example: @include box-div(#fff, 15px, 10px, 1, solid, #f2f2f2);
+ */
+@mixin box-div($bg, $pd, $mg, $b-width, $b-style, $b-color) {
+    background: $bg;
+    padding: $pd;
+    margin: $mg;
+    border-width: $b-width;
+    border-style: $b-style;
+    border-color: $b-color: 
+}
