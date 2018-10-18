@@ -1,2 +1,2 @@
-# SASS
-Helpers in SASS
+# Sass
+Helpers in SASS, leave your contribution.
