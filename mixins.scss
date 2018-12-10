@@ -1,7 +1,7 @@
-/* 
- * Block text
- * Example: @include text(12px, #000, 600, 1);
- */
+// -----------------------------------------------------------------------------
+// Block text
+// Example: @include text(12px, #000, 600, 1);
+//
 @mixin text($size: false, $color: false, $weight: false,  $lineheight: false) {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
     @if $size { font-size: $size; }
@@ -10,27 +10,72 @@
     @if $lineheight { line-height: $lineheight; }
 }
 
-/* 
- * Buttons
- * Example: @include button-bg(#ff0);
- */
- @mixin button-bg($bg) {
-  background: $bg;
+// -----------------------------------------------------------------------------
+// Placeholder
+//Example:
+// input,
+// textarea {
+  // @include placeholder {
+    // color: $grey;
+    // }
+// }
 
-  &:hover {
-    background:darken($bg, 8%);
-    transition: all 0.3s ease;
-  }
-
-  &:active {
-    background:darken($bg, 25%);
-  } 
+@mixin placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
 }
 
-/* 
- * Box div
- * Example: @include box-div(#fff, 15px, 10px, 1, solid, #f2f2f2);
- */
+// -----------------------------------------------------------------------------
+// Button default
+// Example: @include button-size(#313131, #333, 50%, #fff);
+@mixin button($bg, $b-color, $b-radius, $color){
+  background-color: $bg;
+  border: 1px solid $b-color;
+  border-radius: $b-radius; 
+  color: $color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active{
+    background-color: darken($bg, 10%);
+    border-color: darken($b-color, 10%);
+    text-decoration: none;
+  }
+  
+  &:active{
+    background-image: none;
+  }
+
+  &[disabled],
+  fieldset[disabled] & {
+    opacity: .6;
+
+    &,
+    &:hover,
+    &:focus,
+    &:active{
+      background-color: $bg;
+      opacity: .6;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Button size 
+// Example: @include button-size(100px, 55px);
+@mixin button-size($width, $height){
+  width: $width;
+  height: $height;
+  line-height: $height;
+}
+
+// -----------------------------------------------------------------------------
+// Box div
+// Example: @include box-div(#fff, 15px, 10px, 1, solid, #f2f2f2);
 @mixin box-div($bg, $pd, $mg, $b-width, $b-style, $b-color) {
     background: $bg;
     padding: $pd;
